@@ -1,0 +1,71 @@
+﻿@*@model ScreenSaver.Model.ImageModel*@
+@model ScreenSaver.Model.MultipleImagesModel
+@*<section class="features-icons bg-light text-center">
+    <div class="container">*@
+@using (Html.BeginForm("UploadMultipleImages", "Images", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row bg-light" style="height:150px;">
+        <div class="col-md-3 pt-lg-4">
+            <div class="custom-file">
+                @Html.TextBoxFor(model => model.files.files, "", new { @type = "file", @multiple = "multiple", @class = "custom-file-input", @id = "customFile", @name = "filename" })
+                @Html.ValidationMessageFor(model => model.files.files, "", new { @class = "text-danger" })
+                <label class="custom-file-label " for="customFile">Choose List Images</label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label>Time Start:</label>
+            <div class='input-group date' id='datetimepicker6'>
+                @Html.EditorFor(model => model.images.TimeFrom, new { htmlAttributes = new { @class = "form-control date-picker" } })
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label>Time End:</label>
+            <div class='input-group date' id='datetimepicker7'>
+                @*<input type='text' class="form-control" />*@
+                @Html.EditorFor(model => model.images.TimeTo, new { htmlAttributes = new { @class = "form-control date-picker" } })
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <input type="submit" class="btn btn-block btn-lg btn-primary btnUp" value="Upload">
+        </div>
+    </div>
+}
+@*</div>
+    </section>*@
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker6').datetimepicker({
+        });
+        $('#datetimepicker7').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        //if ($('.btnUp').val() != "Update") {
+        $.ajax({
+            url: '/Images/GetTimeFrom',
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                var thedate = new Date(res.value);
+                console.log(thedate.getTime());
+                $('#datetimepicker6').data("DateTimePicker").date(thedate);
+            }
+        });
+        //$('#datetimepicker1').data("DateTimePicker").date(date);
+        $('#datetimepicker7').data("DateTimePicker").date(null);
+        //}
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+
+    });
+</script>

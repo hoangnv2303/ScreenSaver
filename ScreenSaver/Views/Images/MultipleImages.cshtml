@@ -1,0 +1,57 @@
+﻿@*@model Tuple<ScreenSaver.Model.ImageModel, ScreenSaver.Model.FileModel>*@
+@model ScreenSaver.Model.MultipleImagesModel
+
+@*<section class="features-icons bg-light text-center">
+    <div class="container">*@
+@using (Html.BeginForm("MutipleImages", "Images", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row bg-light" style="height:150px;">
+        <div class="col-md-3 pt-lg-4">
+            <div class="custom-file">
+                @Html.TextBoxFor(model => model.files.files, "", new { @type = "file", @multiple = "multiple", @class = "custom-file-input", @id = "customFile", @name = "filename" })
+                @Html.ValidationMessageFor(model => model.files.files, "", new { @class = "text-danger" })
+                <label class="custom-file-label " for="customFile">Choose List Images</label>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <label>Time Start:</label>
+            <div class='input-group date' id='datetimepicker3'>
+                @*<input type='text' class="form-control" />*@
+                @Html.EditorFor(model => model.images.TimeFrom, new { htmlAttributes = new { @class = "form-control date-picker" } })
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-3 pt-md-4">
+            <Label>Interval Days:</Label>
+            <div class='form-group'>
+                @*<input type='text' class="form-control" />*@
+                @Html.EditorFor(model => model.dayInterval, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="col-md-2">
+            <input type="submit" class="btn btn-block btn-lg btn-primary" value="Upload">
+        </div>
+    </div>
+}
+@*</div>
+    </section>*@
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker3').datetimepicker({
+        });
+        $.ajax({
+            url: '/Images/GetTimeFrom',
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                var thedate = new Date(res.value);
+                console.log(thedate.getTime());
+                $('#datetimepicker3').data("DateTimePicker").date(thedate);
+            }
+        });
+    });
+</script>

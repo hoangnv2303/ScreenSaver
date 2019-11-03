@@ -1,0 +1,4 @@
+﻿ID,Name,Url,TimeFrom,TimeTo,Type
+1,Slide1.PNG,\\hvfsp01\Common\LockScreen\ScreenSaverTest\Uploaded\Slide1.PNG,10/31/2019 10:40:00 AM,10/31/2019 10:41:00 AM,ScreenSaver
+2,Slide4.PNG,\\hvfsp01\Common\LockScreen\ScreenSaverTest\Uploaded\Slide4.PNG,10/31/2019 10:40:00 AM,10/31/2019 10:41:00 AM,ScreenSaver
+3,Slide5.PNG,\\hvfsp01\Common\LockScreen\ScreenSaverTest\Uploaded\Slide5.PNG,10/31/2019 10:40:00 AM,10/31/2019 10:41:00 AM,ScreenSaver

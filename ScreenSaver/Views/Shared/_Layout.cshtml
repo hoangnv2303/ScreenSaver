@@ -1,0 +1,168 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Upload images screensaver</title>
+
+    <!-- Bootstrap and Javascript core -->
+    <link href="/Assets/Client/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Assets/Client/css/landing-page.min.css" rel="stylesheet">
+    <script src="/Assets/Client/vendor/jquery/jquery.min.js"></script>
+    <script src="/Assets/Client/vendor/jquery/jquery-ui.min.js"></script>
+    <link href="/Assets/Client/css/jquery-ui.min.css" rel="stylesheet" />
+    <script src="/Assets/Client/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Assets/Client/js/jquery-1.11.min.js"></script>
+    <script src="~/Assets/Client/js/bootstrap.min.js"></script>
+
+    <!-- Custom fonts for this template -->
+    <link href="/Assets/Client/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/Assets/Client/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="/Assets/Client/vendor/pnotify/css/pnotify.css" rel="stylesheet" />
+    <link href="/Assets/Client/vendor/pnotify/css/pnotify.brighttheme.css" rel="stylesheet" />
+    <link href="/Assets/Client/vendor/pnotify/css/pnotify.buttons.css" rel="stylesheet" />
+    <script src="~/Assets/Client/vendor/pnotify/js/pnotify.js"></script>
+    <script src="~/Assets/Client/vendor/pnotify/js/pnotify.buttons.js"></script>
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+
+    @*for datetimepicker*@
+    <script type="text/javascript" src="/Scripts/moment.min.js"></script>
+    <script type="text/javascript" src="/Scripts//bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.min.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    @*<nav class="navbar navbar-light bg-light static-top">
+            <div class="container">
+                <a class="navbar-brand" href="/Home/Index">FIH</a>
+                <div>
+                    @if (ViewBag.User is null)
+                    {
+                        <a class="btn btn-primary" href="/Login/Index">Sign In</a>
+                    }
+                    else
+                    {
+                        <p class="d-inline">Chào:  @ViewBag.User.employee.display_name.ToLower()&nbsp;</p>
+                        <a class="btn btn-primary d-inline" href="/Login/SignOut">Sign Out</a>
+                    }
+                </div>
+            </div>
+        </nav>*@
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="nav-item">
+                <a class="" href="/Home/Index">
+                    <img src="~/Assets/Client/img/fushan-technology-hanoi.jpg" width="160" height="50" alt="">
+                </a>
+                @if (ViewBag.User is null)
+                {
+                    <a class="nav-link btn btn-default col-md-offset-7" href="/Login/Index">Sign In</a>
+                }
+                else
+                {
+                    <p class="nav-link disabled d-inline col-md-offset-7 pl-5">Chào:  <b class="text-danger">@ViewBag.User.employee.display_name&nbsp;</b></p>
+                    <a class="nav-link btn btn-default d-inline" href="/Login/SignOut">Sign Out</a>
+                }
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Masthead -->
+    @RenderBody()
+    <!-- Footer -->
+    <footer class="footer bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+                    <ul class="list-inline mb-2">
+                        <li class="list-inline-item">
+                            <a href="#">Upload Images Portal</a>
+                        </li>
+                    </ul>
+                    <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2019. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item mr-3">
+                            <a href="#">
+                                <i class="fab fa-facebook fa-2x fa-fw"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item mr-3">
+                            <a href="#">
+                                <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="fab fa-instagram fa-2x fa-fw"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @if (TempData["notify-content"] != null)
+    {
+        <script>
+                $(document).ready(function () {
+                new PNotify({
+                    title: '@TempData["notify-title"]',
+                    text: '@TempData["notify-content"]',
+                    type: '@TempData["notify-type"]',
+                    delay: '5000',
+                });
+            });
+        </script>
+    }
+
+    @RenderSection("jsFooter", required: false)
+    <!-- Bootstrap core JavaScript -->
+    <style>
+        .bg-light {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: stretch;
+        }
+
+        .table > tbody > tr > td {
+            vertical-align: middle;
+        }
+
+        #ChangeImages {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .table-footer .row {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        section {
+            margin-bottom: 15px;
+        }
+
+        .navbar {
+            border-bottom: 3px #e0e0e0 solid;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</body>
+</html>

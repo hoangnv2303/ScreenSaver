@@ -1,0 +1,46 @@
+﻿@model ScreenSaver.Model.ImageModel
+
+@{
+    ViewBag.Title = "Defautl Images Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listImages = (List<ScreenSaver.Model.ImageModel>)ViewBag.listImages;
+}
+
+@section jsFooter{
+    <script src="~/Assets/Client/js/ListImages.js"></script>
+    <script src="~/Assets/Client/js/HomeController.js"></script>
+}
+<div class="container"><h3 class="text-light bg-dark"><b class="text-white">Default Images</b> For:</h3></div>
+@using (Html.BeginForm("DefaultImages", "Images", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row bg-light" style="height:190px;">
+        <div class="col-md-3">
+            <h4>@listImages[0].Type</h4>
+            <img height="160" width="230" class="img-rounded" src="@listImages[0].Url" alt="No image default, Please select one!">
+        </div>
+        <div class="col-md-3">
+            <div class="custom-file">
+                @Html.TextBox("file", "", new { type = "file", @class = "custom-file-input", @id = "customFile", @name = "filename" })
+                <label class="custom-file-label " for="customFile">Choose Image</label>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <input type="submit" class="btn btn-block btn-lg btn-primary btnUp" value="Change Image">
+        </div>
+    </div>
+    <div class="row bg-light mt-2" style="height:195px;">
+            <div class="col-md-3">
+                <h4>@listImages[1].Type</h4>
+                <img height="160" width="230" class="img-rounded" src="@listImages[1].Url" alt="No image default, Please select one!">
+            </div>
+            <div class="col-md-3">
+                <div class="custom-file">
+                    @Html.TextBox("file1", "", new { type = "file", @class = "custom-file-input", @id = "customFile", @name = "filename" })
+                    <label class="custom-file-label " for="customFile">Choose Image</label>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-block btn-lg btn-primary btnUp" value="Change Image">
+            </div>
+        </div>
+}

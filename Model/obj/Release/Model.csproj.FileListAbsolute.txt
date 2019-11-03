@@ -1,0 +1,11 @@
+C:\Users\v1517299\source\repos\ScreenSaver\Model\bin\Release\Model.dll.config
+C:\Users\v1517299\source\repos\ScreenSaver\Model\bin\Release\Model.dll
+C:\Users\v1517299\source\repos\ScreenSaver\Model\bin\Release\Model.pdb
+C:\Users\v1517299\source\repos\ScreenSaver\Model\bin\Release\EntityFramework.dll
+C:\Users\v1517299\source\repos\ScreenSaver\Model\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\v1517299\source\repos\ScreenSaver\Model\bin\Release\EntityFramework.xml
+C:\Users\v1517299\source\repos\ScreenSaver\Model\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\v1517299\source\repos\ScreenSaver\Model\obj\Release\Model.csprojAssemblyReference.cache
+C:\Users\v1517299\source\repos\ScreenSaver\Model\obj\Release\Model.csproj.CopyComplete
+C:\Users\v1517299\source\repos\ScreenSaver\Model\obj\Release\Model.dll
+C:\Users\v1517299\source\repos\ScreenSaver\Model\obj\Release\Model.pdb

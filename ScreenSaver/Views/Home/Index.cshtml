@@ -1,0 +1,58 @@
+﻿@model ScreenSaver.Model.ImageModel
+
+@{
+    ViewBag.Title = "This is homepage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listImages = (List<ScreenSaver.Model.ImageModel>)ViewBag.listImages;
+}
+
+@section jsFooter{
+    <script src="~/Assets/Client/js/ListImages.js"></script>
+    <script src="~/Assets/Client/js/HomeController.js"></script>
+}
+
+<!-- Select type -->
+<header class="features-icons bg-light text-center masthead mt-xl-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4" id="btnScreenSaver">
+                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                    <div class="features-icons-icon d-flex">
+                        <i class="icon-screen-desktop m-auto text-primary"></i>
+                    </div>
+                    <h3>ScreenSaver</h3>
+                    <p class="lead mb-0">This selection for update screensaver images!</p>
+                </div>
+            </div>
+            <div class="col-lg-4" id="btnLockScreen">
+                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                    <div class="features-icons-icon d-flex">
+                        <i class="icon-key m-auto text-primary"></i>
+                    </div>
+                    <h3>LockScreen</h3>
+                    <p class="lead mb-0">This selection for update lockscreen images!</p>
+                </div>
+            </div>
+            <div class="col-lg-4" id="btnDefaultImages">
+                <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+                    <div class="features-icons-icon d-flex">
+                        <i class="icon-settings m-auto text-primary"></i>
+                    </div>
+                    <h3>Images Default</h3>
+                    <p class="lead mb-0">This selection for setting image default</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#btnScreenSaver').off('click').on('click', function () {
+            window.location.href = "/images-upload?type=1";
+        });
+        $('#btnLockScreen').off('click').on('click', function () {
+            window.location.href = "/images-upload?type=2";
+        });
+        $('#btnDefaultImages').off('click').on('click', function () {
+            window.location.href = "/default-images";
+        });
+    </script>
+</header>
